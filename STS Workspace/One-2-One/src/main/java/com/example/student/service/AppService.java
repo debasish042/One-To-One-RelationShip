@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.student.entity.Address;
 import com.example.student.entity.Student;
+import com.example.student.exception.ResultNotFoundException;
 import com.example.student.repository.AddressRepository;
 import com.example.student.repository.StudentRepository;
 
@@ -42,7 +43,7 @@ public class AppService {
 	public void getStudentById() {
 		
 		Student student = studentRepo.findById(2)
-		        .orElseThrow(() -> new RuntimeException("Student not found"));
+		        .orElseThrow(() -> new ResultNotFoundException("Student not found"));
 		System.out.println(student);
 		student.getAddress().getCity();
 		
